@@ -3,6 +3,7 @@ import moment from 'moment'
 import Link from 'next/link'
 
 interface props {
+   
     post: {
         title: string,
         excerpt: string,

@@ -7,11 +7,14 @@ import { getPosts } from '../services'
 
 interface props{
   posts: {
+    node: {
+
       title: string,
       excerpt: string,
       featuredImage?: {
         url: string
       }
+    }
   }[]
 }
 
@@ -28,7 +31,7 @@ const Home: NextPage<props> = ( {posts} ) => {
 
         { posts.map((post, index) => (
 
-          <PostCard post={post} key={index}/>
+          <PostCard post={post.node} key={index}/>
         ))}
         </div>
 
