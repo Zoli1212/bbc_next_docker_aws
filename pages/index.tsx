@@ -10,6 +10,7 @@ interface props{
     node: {
 
       title: string,
+      slug: string,
       excerpt: string,
       featuredImage?: {
         url: string
