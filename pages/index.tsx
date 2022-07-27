@@ -3,16 +3,22 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { PostCard, Categories, PostWidget} from '../components'
 
+import { getPosts } from '../services'
 
-const posts = [
-  { title: 'React testing', excerpt: 'Learn React testing'},
-  { title: 'React with Tailwind', excerpt: 'Learn React with Tailwind'},
+interface props{
+  posts: {
+      title: string,
+      excerpt: string,
+      featuredImage?: {
+        url: string
+      }
+  }[]
+}
 
-]
 
-const Home: NextPage = () => {
+const Home: NextPage<props> = ( {posts} ) => {
   return (
-    <div className="container mx-auto px-10 mb-8 bg-red-800">
+    <div className="container mx-auto px-10 mb-8 ">
       <Head>
         <title>BBC NEWS</title>
         <link rel="icon" href="/favicon.ico" />
@@ -22,7 +28,7 @@ const Home: NextPage = () => {
 
         { posts.map((post, index) => (
 
-          <PostCard post={post} key={post.title}/>
+          <PostCard post={post} key={index}/>
         ))}
         </div>
 
@@ -39,6 +45,14 @@ const Home: NextPage = () => {
     
     </div>
   )
+}
+
+export async function getStaticProps(){
+  const posts = (await getPosts()) || []
+
+  return {
+    props: { posts }
+  }
 }
 
 export default Home

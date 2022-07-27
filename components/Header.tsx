@@ -1,20 +1,33 @@
-import React, { useContext} from 'react'
+import React, { useState, useEffect, useContext} from 'react'
 import Link from 'next/link'
 
-export const Header = () => {
+
+
+const categoriesCoded = [{name: 'React', slug: 'react'}, { name: 'Web development', slug: 'web-dev' }]
+const Header = () => {
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+      
+      
+    }, []);
   return (
-    <div className='container mx-auto px-10 mb-8'>
+    <div className='container mx-auto px-10 mb-8 bg-red-800'>
         <div className='border-b w-full inline-block border-red-400 py-8'>
             <div className="md:float-left block">
                 <Link href='/'>
                     <span className="cursor-pointer font-bold text-4xl text-white">
-                        GraphCMS
+                        World News
                     </span>
 
                 </Link>
 
             </div>
-            <div className='hidden'>
+            <div className='hidden md:float-left md:contents'>
+                { categoriesCoded.map((category) => (<Link key={category.slug} href={`/category/${category.slug}`}>
+                    <span className='md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer'>{category.name}</span>
+                </Link>))}
 
             </div>
 
@@ -22,3 +35,5 @@ export const Header = () => {
     </div>
   )
 }
+
+export default Header
