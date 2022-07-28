@@ -12,9 +12,16 @@ interface props{
       title: string,
       slug: string,
       excerpt: string,
+      createdAt: string,
       featuredImage?: {
         url: string
-      }
+      },
+      author: {
+        bio: string,
+        name: string,
+        id: string,
+        photo: { url: string }
+      },
     }
   }[]
 }
