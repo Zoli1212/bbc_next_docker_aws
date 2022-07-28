@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 
 
-const categoriesCoded = [{name: 'React', slug: 'react'}, { name: 'Web development', slug: 'web-dev' }]
+const categoriesCoded = [{name: 'React', slug: 'react'}, { name: 'Web development', slug: 'web-dev' }, { name: 'Sport', slug: 'web-dev' },  { name: 'World News', slug: 'web-dev' }]
 const Header = () => {
 
     const [categories, setCategories] = useState([]);
